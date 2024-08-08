@@ -15,7 +15,7 @@ Main objective as understood is to create best model for predicting the output o
 My main task is to first understand, evaluate the data, clean, and pre-process.
 Next task is to feed into various models and evaluate the accuracy, precision, recall, F-score and if required iterate to get best result. Store the model. Call it as an api in the main.py for any description given to the function.  
 
-# Action:
+## Action:
 I mainly used nltk, sklearn with basic pandas to get the job done. 
 I mainly did the following task,
 
