@@ -59,6 +59,8 @@ The dataset contains medical trial descriptions associated with specific labels 
 6. Cross-Validation for Generalization:
    - Ensuring Robustness: Given the limited size of your dataset (1,759 entries), it's essential to ensure that the model generalizes well to unseen data. GridSearchCV uses cross-validation, meaning it repeatedly trains the model on different subsets of the data, ensuring the chosen hyperparameters work well across the entire dataset.
 
+## Result: 
+![image](https://github.com/user-attachments/assets/f70bc04d-5c64-4aca-af69-09ba61303dbc)
 
 
 Finally to run and test, please use main.py to run in the terminal to see the output at http://127.0.0.1:5000/predict
