@@ -1,3 +1,6 @@
 flask
 black
-
+pandas
+nltk
+re
+joblib
