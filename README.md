@@ -37,5 +37,28 @@ I mainly did the following task,
     Saves the best-performing model.
 
 
-> Why GridSearchCV: 
-GridSearchCV was used to automatically search for the best combination of hyperparameters (like regularization strength) for the Logistic Regression model. Instead of manually trying different settings, GridSearchCV tries them all and finds the one that gives the best performance, making the model more accurate and effective.
+5. I used GridSearchCV, and here is the explaination for it. 
+
+The dataset contains medical trial descriptions associated with specific labels (like "ALS"). Here's why GridSearchCV is particularly useful for optimizing a model on this dataset:
+
+1. Complexity of Medical Text Descriptions:
+   - Specialized Vocabulary: Medical descriptions often contain complex terminology, which can lead to high-dimensional feature spaces when converted to numerical data. GridSearchCV helps by tuning the parameters of the vectorization process (e.g., TF-IDF), ensuring that the model captures the most important features while ignoring noise.
+
+2. Variability in Text Length and Content:
+   - Diverse Sentence Structures: The descriptions in your dataset likely vary in length and structure. Some descriptions might be concise, while others are detailed. GridSearchCV can optimize how the text is tokenized and how n-grams (combinations of words) are used, leading to better feature extraction for such diverse text.
+
+3. Class Imbalance:
+   - Imbalanced Labels: If your dataset has an unequal distribution of labels (e.g., more descriptions for ALS compared to other conditions), certain models might struggle with prediction accuracy. GridSearchCV helps find the best regularization parameters that can handle this imbalance, ensuring the model doesn't just predict the majority class.
+
+4. Optimization of Feature Extraction:
+   - Tuning TF-IDF Parameters: The effectiveness of the TF-IDF vectorization depends on parameters like `max_df` (maximum document frequency) and `ngram_range`. GridSearchCV can fine-tune these parameters, helping the model to focus on relevant medical terms and ignore common but uninformative words.
+
+5. Precision vs. Recall in Medical Applications:
+   - Balancing Trade-offs: In medical text classification, it's crucial to balance precision (correctly identifying a condition) and recall (identifying all relevant cases). GridSearchCV allows you to specify which metric to prioritize, optimizing the model according to the critical needs of medical decision-making.
+
+6. Cross-Validation for Generalization:
+   - Ensuring Robustness: Given the limited size of your dataset (1,759 entries), it's essential to ensure that the model generalizes well to unseen data. GridSearchCV uses cross-validation, meaning it repeatedly trains the model on different subsets of the data, ensuring the chosen hyperparameters work well across the entire dataset.
+
+
+
+Finally to run and test, please use main.py to run in the terminal to see the output at http://127.0.0.1:5000/predict
