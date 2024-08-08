@@ -20,22 +20,21 @@ I mainly used nltk, sklearn with basic pandas to get the job done.
 I mainly did the following task,
 
 1. Data Handling:
-Reads data from a CSV file.
-Cleans the data by removing unnecessary columns.
+    Reads data from a CSV file.
+    Cleans the data by removing unnecessary columns.
 
 2. Text Preprocessing:
+    Cleans up the text by removing irrelevant characters, stopwords, and reducing words to their base form (lemmatization).
 
-Cleans up the text by removing irrelevant characters, stopwords, and reducing words to their base form (lemmatization).
+3. Model Training:
+    Splits the data into training and testing sets.
+    Converts text data into numerical features using TF-IDF (which turns text into numbers that represent how important each word is in the text).
+    Trains a Logistic Regression model to predict labels based on the text.
 
-3.Model Training:
-Splits the data into training and testing sets.
-Converts text data into numerical features using TF-IDF (which turns text into numbers that represent how important each word is in the text).
-Trains a Logistic Regression model to predict labels based on the text.
-
-4.Model Tuning and Evaluation:
-Uses GridSearchCV to find the best hyperparameters (settings) for the model.
-Evaluates the model's performance using accuracy and other metrics.
-Saves the best-performing model.
+4. Model Tuning and Evaluation:
+    Uses GridSearchCV to find the best hyperparameters (settings) for the model.
+    Evaluates the model's performance using accuracy and other metrics.
+    Saves the best-performing model.
 
 
 > Why GridSearchCV: 
