@@ -9,7 +9,7 @@ BASE_URL = "http://127.0.0.1:5000/"
 def test_predict():
     """
     Test the predict route with test data
-    """
+    """    
     test_description = {"description": "this is a test description about Dementia"}
     print("Calling API with test description:")
     response = requests.post(f"{BASE_URL}/predict", data=json.dumps(test_description))

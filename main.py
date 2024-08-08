@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from typing import Literal
+from file_text_analysis import *
 
 
 app = Flask(__name__)
@@ -22,7 +23,9 @@ def predict(description: str) -> LABELS:
                                 'Obsessive Compulsive Disorder',
                                 'Scoliosis', 'Parkinson’s Disease']
     """
-    raise NotImplementedError()
+    predicted_label = d_train_evaluate(description)
+    
+    return predicted_label
 
 
 @app.route("/")
@@ -30,14 +33,23 @@ def hello_world():
     return "Hello, World!"
 
 
-@app.route("/predict", methods=["POST"])
+@app.route("/predict", methods=["GET","POST"])
 def identify_condition():
-    data = request.get_json(force=True)
+    #data = request.get_json(force=True)
+    df = d_read_csv("data/trials.csv")
+    clean_df = d_cleanse_df(df)
+    pre_processed_df = d_text_processing(clean_df)
+    d_train_evaluate(pre_processed_df)
 
-    prediction = predict(data["description"])
+    # Example usage
+    model_path = 'best_text_classification_model.pkl'
+    loaded_model = load_model(model_path)
 
-    return jsonify({"prediction": prediction})
-
+    new_description = "this is a test description about Dementia"
+    predicted_label = predict_description(loaded_model, new_description)
+    print(f'The predicted label for the new description is: {predicted_label}')
+    return predicted_label
+    
 
 if __name__ == "__main__":
     app.run()
